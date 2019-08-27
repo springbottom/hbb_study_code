@@ -1,0 +1,3 @@
+To run: 
+
+./myexample.exe signal.cmnd (LOCATION TO STORE EVENTS) (LHE OUTPUT FROM MG5)
