@@ -1,0 +1,39 @@
+! main89mlm.cmnd
+
+! Specify statistics parameters.
+! Main:numberOfEvents         = 50000 ! number of events generated
+Main:numberOfEvents = 50000
+! Tell Pythia that LHEF input is used
+Beams:frameType             = 4
+
+Main:timesAllowErrors = 100000000
+
+! Use same PDFs and alpha_s as in ME calculation.
+!PDF:pSet                  = LHAPDF5:CT10.LHgrid
+!SpaceShower:alphaSvalue   = 0.118
+!TimeShower:alphaSvalue    = 0.118
+
+! Specify jet matching parameters for MLM
+! Note: Some of these settings might be read directly from the input LHE file.
+
+! Merging:Process            = pp>jj
+! Merging:nJetMax            = 2
+
+JetMatching:merge            = on
+JetMatching:scheme           = 1
+JetMatching:setMad           = on
+JetMatching:qCut             = 50.0
+JetMatching:coneRadius       = 0.8
+!JetMatching:etaJetMax        = 10.0
+JetMatching:nJetMax          = 2
+
+! Be more forgiving with momentum mismatches.
+Check:epTolErr               = 1e-2
+
+! Subruns for MLM jet matching
+LHEFInputs:nSubruns       = 1
+Main:subrun               = 0
+! Beams:LHEF                = zProduction_Mlm_012.lhe
+! Beams:LHEF = unweighted_events.lhe
+! Beams:LHEF = /global/homes/j/jzlin/libraries/MG5_aMC_v2_6_2/bin/phil_background/Events/run_03_9/unweighted_events.lhe
+! Beams:LHEF = /global/homes/j/jzlin/libraries/MG5_aMC_v2_6_2/bin/PROC_sm_9/Events/run_01/unweighted_events.lhe
